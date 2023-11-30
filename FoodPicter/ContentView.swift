@@ -10,6 +10,10 @@ import SwiftUI
  
 struct ContentView: View {
     let food = ["漢堡", "沙拉", "披薩", "義大利麵", "炸雞", "刀削麵", "火鍋", "牛肉麵", "關東煮"]
+  
+    
+    
+    
     
     
     @State private var selectedFood: String?
