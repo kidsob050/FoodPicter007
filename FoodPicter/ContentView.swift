@@ -14,8 +14,6 @@ struct ContentView: View {
     
     
     
-    
-    
     @State private var selectedFood: String?
     
     var body: some View {
