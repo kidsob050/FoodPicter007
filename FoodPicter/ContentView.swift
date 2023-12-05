@@ -9,28 +9,32 @@ import SwiftUI
 
  
 struct ContentView: View {
-    let food = ["漢堡", "沙拉", "披薩", "義大利麵", "炸雞", "刀削麵", "火鍋", "牛肉麵", "關東煮"]
-  
+    let food = Food.examples
     
     
     
-    @State private var selectedFood: String?
+    @State private var selectedFood: Food?
     
     var body: some View {
         if #available(iOS 15.0, *) {
             VStack(spacing: 30 ) {
-                Image("dinner")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                if selectedFood != .none{
+                    Text(selectedFood!.image)
+                        .font(.system(size: 180))
+                } else{
+                    Image("dinner")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
                 
                 Text("隨便選個吃吧!")
                     .font(.largeTitle)
                     .bold()
                 if selectedFood != .none {
-                    Text(selectedFood ?? "")
+                    Text(selectedFood!.name)
                         .font(.largeTitle)
                         .foregroundColor(.pink)
-                        .id(selectedFood)
+                        .id(selectedFood!.name)
                         .transition(.asymmetric(
                             insertion: .opacity
                                 .animation(.easeInOut(duration:0.5).delay(0.2)),
@@ -67,7 +71,7 @@ struct ContentView: View {
                 }
             }
             .padding()
-            .frame(maxHeight: .infinity)
+            .frame(maxWidth: .infinity,maxHeight: .infinity)
             .background(Color(.secondarySystemBackground))
             .font(.title)
             .buttonStyle(.borderedProminent)
