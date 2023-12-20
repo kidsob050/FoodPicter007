@@ -21,15 +21,23 @@ struct ContentView: View {
                 if selectedFood != .none{
                     Text(selectedFood!.image)
                         .font(.system(size: 180))
+                        .minimumScaleFactor(0.1)
+                        .lineLimit(1)
+                        .frame(height: 250)
+                        .border(.green)
                 } else{
                     Image("dinner")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .frame(height: 250)
+                        .border(.purple)
                 }
                 
                 Text("隨便選個吃吧!")
                     .font(.largeTitle)
                     .bold()
+                    .frame(width: 250, height: 80, alignment: .center)
+                    .border(.yellow)
                 if selectedFood != .none {
                     Text(selectedFood!.name)
                         .font(.largeTitle)
@@ -42,6 +50,9 @@ struct ContentView: View {
                                 .animation(.easeInOut(duration: 0.4))))
                     
                 }
+                
+                Spacer()
+                
                 
                 if #available(iOS 15.0, *) {
                     Button(role: .none){
