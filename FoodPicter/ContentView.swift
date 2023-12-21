@@ -18,26 +18,26 @@ struct ContentView: View {
     var body: some View {
         if #available(iOS 15.0, *) {
             VStack(spacing: 30 ) {
-                if selectedFood != .none{
-                    Text(selectedFood!.image)
-                        .font(.system(size: 180))
-                        .minimumScaleFactor(0.1)
-                        .lineLimit(1)
-                        .frame(height: 250)
-                        .border(.green)
-                } else{
-                    Image("dinner")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 250)
-                        .border(.purple)
+                Group {
+                    if selectedFood != .none{
+                        Text(selectedFood!.image)
+                            .font(.system(size: 200))
+                            
+                            
+                    } else{
+                        Image("dinner")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            
+                    }
                 }
+                
                 
                 Text("隨便選個吃吧!")
                     .font(.largeTitle)
                     .bold()
                     .frame(width: 250, height: 80, alignment: .center)
-                    .border(.yellow)
+                    .border(.black)
                 if selectedFood != .none {
                     Text(selectedFood!.name)
                         .font(.largeTitle)
