@@ -39,16 +39,23 @@ struct ContentView: View {
                     .frame(width: 250, height: 80, alignment: .center)
                     .border(.black)
                 if selectedFood != .none {
-                    Text(selectedFood!.name)
-                        .font(.largeTitle)
-                        .foregroundColor(.pink)
-                        .id(selectedFood!.name)
-                        .transition(.asymmetric(
-                            insertion: .opacity
-                                .animation(.easeInOut(duration:0.5).delay(0.2)),
-                            removal: .opacity
+                    HStack {
+                        Text(selectedFood!.name)
+                            .font(.largeTitle)
+                            .foregroundColor(.pink)
+                            .id(selectedFood!.name)
+                            .transition(.asymmetric(
+                                insertion: .opacity
+                                    .animation(.easeInOut(duration:0.5).delay(0.2)),
+                                removal: .opacity
                                 .animation(.easeInOut(duration: 0.4))))
-                    
+                        Image(systemName: "info.circle.fill")
+                            .foregroundColor(.secondary)
+                    }
+                    Text("熱量 \(selectedFood!.calorie.formatted())大卡")
+                    HStack{
+                        Text("蛋白質 \n\(selectedFood!.protein)g")
+                    }
                 }
                 
                 Spacer()
