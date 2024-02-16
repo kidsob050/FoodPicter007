@@ -53,9 +53,24 @@ struct ContentView: View {
                             .foregroundColor(.secondary)
                     }
                     Text("熱量 \(selectedFood!.calorie.formatted())大卡")
-                    HStack{
-                        Text("蛋白質 \n\(selectedFood!.protein)g")
+                    HStack {
+                        VStack (spacing: 12){
+                            Text("蛋白質")
+                            Text(selectedFood!.protein.formatted() + "g")
+                        }
+                        
+                        Divider().frame(width: 1).padding(.horizontal)
+                        VStack (spacing: 12){
+                            Text("脂肪")
+                            Text(selectedFood!.fat.formatted() + "g")
+                        }
+                        VStack (spacing: 12){
+                            Text("碳水")
+                            Text(selectedFood!.carb.formatted() + "g")
+                        }
                     }
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.systemBackground)))
                 }
                 
                 Spacer()
